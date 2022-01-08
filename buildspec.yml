@@ -1,16 +1,11 @@
 version: 0.2
-phases:
-install:
-runtime-versions:
 nodejs: 14
 commands:
 - npm install -g yarn
 - yarn install -g typescript
 - yarn install
-pre_build:
 commands:
 - echo Nothing to do in the pre_build phase...
-build:
 commands:
 - echo Build started on `date`
 - yarn run build
