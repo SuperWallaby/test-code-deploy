@@ -1,19 +1,26 @@
 version: 0.2
-nodejs: 14
-commands:
-- npm install -g yarn
-- yarn install -g typescript
-- yarn install
-commands:
-- echo Nothing to do in the pre_build phase...
-commands:
-- echo Build started on `date`
-- yarn run build
-- yarn test
-commands:
-- echo Build completed on `date`
-paths:
-- 'node_modules/**/*'
-files:
-- '**/*'
-name: yourBuildName-$(date +%Y-%m-%d)
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm install -g typescript
+      - npm install
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
+      - npm test
+  post_build:
+    commands:
+      - echo Build completed on `date`
+  cache:
+    paths:
+      - 'node_modules/**/*'
+  artifacts:
+    files:
+      - '**/*'
+  name: yourBuildName-$(date +%Y-%m-%d)
