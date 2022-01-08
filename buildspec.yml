@@ -15,13 +15,10 @@ commands:
 - echo Build started on `date`
 - yarn run build
 - yarn test
-post_build:
 commands:
 - echo Build completed on `date`
-cache:
 paths:
 - 'node_modules/**/*'
-artifacts:
 files:
 - '**/*'
 name: yourBuildName-$(date +%Y-%m-%d)
